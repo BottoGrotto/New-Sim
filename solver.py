@@ -89,21 +89,19 @@ class Solver:
                         # mass_ratio = 0
                         delta = 0.5 * (min_dist - dist)
                         
-                        if isinstance(obj1, RopeParticle) and isinstance(obj2, RopeParticle):
-                            pass
-                        else:
+                        # if not isinstance(obj1, RopeParticle) and not isinstance(obj2, RopeParticle):
                             # mvb =  + mvb2
-                            if obj1.anchorpoint:
-                                # n.normalize() * (1 - mass_ratio)
-                                obj2.pos -= n.normalize() * obj2.getVelocity().magnitude() * delta
-                            else:
-                                obj1.pos += n * (1 - mass_ratio) * delta
+                        if obj1.anchorpoint:
+                            # n.normalize() * (1 - mass_ratio)
+                            obj2.pos -= n.normalize() * obj2.getVelocity().magnitude() * delta
+                        else:
+                            obj1.pos += n * (1 - mass_ratio) * delta
 
-                            if obj2.anchorpoint:
+                        if obj2.anchorpoint:
 
-                                obj1.pos += n.normalize() * obj1.getVelocity().magnitude() * delta
-                            else:
-                                obj2.pos -= n * (1 - mass_ratio) * delta
+                            obj1.pos += n.normalize() * obj1.getVelocity().magnitude() * delta
+                        else:
+                            obj2.pos -= n * (1 - mass_ratio) * delta
                         
         end = time.time()
         # print(end - start)
